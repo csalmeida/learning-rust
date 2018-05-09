@@ -13,7 +13,6 @@ fn main() {
 
     // Variable that is not mutable (cannot be changed after assigned).
     let secret_number = rand::thread_rng().gen_range(1, 101);
-    println!("The secret number is: {}", secret_number);
     
     loop {
         // Creates a mutable empty string variable that acts as a place holder for a guess.
@@ -25,8 +24,10 @@ fn main() {
             .expect("Failed to read line");
 
         // Converts guess from string to unsigned integer.
-        let guess: u32 = guess.trim().parse()
-            .expect("Please type a number!");
+        let guess: u32 = match guess.trim().parse() {
+            Ok(num) => num,
+            Err(_) => continue,
+        };
             
         // Prints guess.
         println!("You guessed: {}", guess);
