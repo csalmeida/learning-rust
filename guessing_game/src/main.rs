@@ -15,25 +15,30 @@ fn main() {
     let secret_number = rand::thread_rng().gen_range(1, 101);
     println!("The secret number is: {}", secret_number);
     
-    // Creates a mutable empty string variable that acts as a place holder for a guess.
-    let mut guess = String::new();
-    println!("Please input your guess.");
-    // Uses io module to allow input to take place.
-    // Makes use of placeholder variable.
-    io::stdin().read_line(&mut guess)
-        .expect("Failed to read line");
+    loop {
+        // Creates a mutable empty string variable that acts as a place holder for a guess.
+        let mut guess = String::new();
+        println!("Please input your guess.");
+        // Uses io module to allow input to take place.
+        // Makes use of placeholder variable.
+        io::stdin().read_line(&mut guess)
+            .expect("Failed to read line");
 
-    // Converts guess from string to unsigned integer.
-    let guess: u32 = guess.trim().parse()
-        .expect("Please type a number!");
-        
-    // Prints guess.
-    println!("You guessed: {}", guess);
+        // Converts guess from string to unsigned integer.
+        let guess: u32 = guess.trim().parse()
+            .expect("Please type a number!");
+            
+        // Prints guess.
+        println!("You guessed: {}", guess);
 
-    // Match runs the line that fits its pattern. This match has three arms each with it's own pattern, less, greater, equal.
-    match guess.cmp(&secret_number) {
-        Ordering::Less => println!("Too small!"),
-        Ordering::Greater => println!("Too big!"),
-        Ordering::Equal => println!("You win!"),
+        // Match runs the line that fits its pattern. This match has three arms each with it's own pattern, less, greater, equal.
+        match guess.cmp(&secret_number) {
+            Ordering::Less => println!("Too small!"),
+            Ordering::Greater => println!("Too big!"),
+            Ordering::Equal => {
+                println!("You win!");
+                break;
+            },
+        }
     }
 }
