@@ -25,4 +25,8 @@ fn main() {
     println!("Printing compound types:");
     let tup: (u8, i32, char, f32, bool) = (255, 32, '🙌', 20.77, true);
     println!("Here's part of a tuple value: {}", tup.2);
+
+    // Arrays can hold multiple values of the SAME type and cannot grow or shrink after being declared.
+    let arr = [02,11,2077];
+    println!("Retrieving values from an array: {}.{}.{}", arr[0], arr[1], arr[2]);
 }
