@@ -11,6 +11,7 @@ fn main() {
         println!("{}", number);
         number = number - 1;
     }
+
     println!("LIFTOFF!");
 
     let decades = [10, 20, 30, 40, 50];
