@@ -1,6 +1,0 @@
-[package]
-name = "functions"
-version = "0.1.0"
-authors = ["Cristiano Almeida <cs.almeida@protonmail.ch>"]
-
-[dependencies]
