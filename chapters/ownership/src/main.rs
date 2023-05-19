@@ -1,4 +1,5 @@
 fn main() {
+    // variations in s2 to s_n, using the fucntion takes_and_gives_back(s2,.....s_n); fn main() {
     let s = String::from("hello"); // s comes into scope
 
     takes_ownership(s); // s's value moves into the function...
