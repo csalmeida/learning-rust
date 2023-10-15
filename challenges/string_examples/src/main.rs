@@ -11,7 +11,7 @@
 /// 2. Concatenate a String with a String.
 /// 3. Concatenate an str with an str.
 /// 4. Concatenate a String with an str.
-/// 5.Interporalete values into a new string, for example we might want to separate values with a symbol character, for instance, e.g "first_name / last_name"
+/// 5. Interporalete values into a new string, for example we might want to separate values with a symbol character, for instance, e.g "first_name / last_name".
 /// 6. Use double quotes in string text.
 /// 7. Define a character and attach it to a string.
 /// 8. Explain what happens in memory when we use the two types.
