@@ -1,6 +1,6 @@
 fn main() {
-    let numbers: Vec<u8> = vec![7, 2, 5, 4, 1, 6, 0, 3];
-    let numbers_list: Vec<u8> = selection_sort(&numbers);
+    let numbers: Vec<u32> = vec![7, 2, 5, 4, 1, 6, 0, 3];
+    let numbers_list: Vec<u32> = selection_sort(&numbers);
 
     println!("Start list: {:?}", numbers);
     println!("Sorted list: {:?}", numbers_list);
@@ -32,17 +32,17 @@ fn main() {
 /// [0, 1, 2, 3, 4, 5, 6, 7]
 /// ```
 ///
-fn selection_sort(numbers: &Vec<u8>) -> Vec<u8> {
+fn selection_sort(numbers: &Vec<u32>) -> Vec<u32> {
     // Clones the list so that the original one is not modified.
     let mut numbers_list = numbers.clone();
 
     for index in 0..numbers_list.len() {
-        let number: u8 = numbers_list[index];
-        let mut lowest: u8 = number;
+        let number: u32 = numbers_list[index];
+        let mut lowest: u32 = number;
         let mut swap_position: usize = index;
 
         for position in 0..numbers_list.len() {
-            let comparable: u8 = numbers_list[position];
+            let comparable: u32 = numbers_list[position];
 
             if position <= index {
                 continue;
@@ -58,4 +58,72 @@ fn selection_sort(numbers: &Vec<u8>) -> Vec<u8> {
     }
 
     return numbers_list;
+}
+
+#[cfg(test)]
+mod tests {
+    use crate::selection_sort;
+
+    #[test]
+    fn selection_sort_orders_handles_empty_vec() {
+        let original: Vec<u32> = vec![];
+        let result = vec![];
+
+        let sorted = selection_sort(&original);
+        assert_eq!(sorted, result);
+    }
+
+    #[test]
+    fn selection_sort_orders_handles_single_number() {
+        let original = vec![7];
+        let result = vec![7];
+
+        let sorted = selection_sort(&original);
+        assert_eq!(sorted, result);
+    }
+
+    #[test]
+    fn selection_sort_orders_handles_two_numbers() {
+        let original = vec![7, 2];
+        let result = vec![2, 7];
+
+        let sorted = selection_sort(&original);
+        assert_eq!(sorted, result);
+    }
+
+    #[test]
+    fn selection_sort_orders_numbers() {
+        let original = vec![7, 2, 5, 4, 1, 6, 0, 3];
+        let result = vec![0, 1, 2, 3, 4, 5, 6, 7];
+
+        let sorted = selection_sort(&original);
+        assert_eq!(sorted, result);
+    }
+
+    #[test]
+    fn selection_sort_orders_base_ten() {
+        let original = vec![70, 20, 50, 100, 40, 90, 10, 60, 30, 80];
+        let result = vec![10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+
+        let sorted = selection_sort(&original);
+        assert_eq!(sorted, result);
+    }
+
+    #[test]
+    fn selection_sort_orders_base_hundred() {
+        let original = vec![700, 200, 500, 1000, 400, 900, 100, 600, 300, 800];
+        let result = vec![100, 200, 300, 400, 500, 600, 700, 800, 900, 1000];
+
+        let sorted = selection_sort(&original);
+        assert_eq!(sorted, result);
+    }
+
+    #[test]
+    fn selection_sort_orders_base_thousand() {
+        let original = vec![7000, 2000, 5000, 10000, 4000, 9000, 1000, 6000, 3000, 8000];
+        let result = vec![1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10_000];
+
+        let sorted = selection_sort(&original);
+        assert_eq!(sorted, result);
+    }
 }
