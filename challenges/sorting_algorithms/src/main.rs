@@ -41,7 +41,7 @@ fn selection_sort(numbers: &Vec<u32>) -> Vec<u32> {
         let mut lowest: u32 = number;
         let mut swap_position: usize = index;
 
-        for position in 0..numbers_list.len() {
+        for position in (index + 1)..numbers_list.len() {
             let comparable: u32 = numbers_list[position];
 
             if position <= index {
